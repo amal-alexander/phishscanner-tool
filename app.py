@@ -405,23 +405,22 @@ st.markdown("""
         width: 100% !important;
     }
 
-    /* Code Blocks Readability - Exhaustive Fix */
+    /* THE NUCLEAR FIX - Code Blocks & Text Areas Readability */
     [data-testid="stCodeBlock"], 
-    [data-testid="stCodeBlock"] > div, 
-    [data-testid="stCodeBlock"] pre, 
-    [data-testid="stCodeBlock"] code,
-    .stCodeBlock, 
-    .stCodeBlock pre, 
-    .stCodeBlock code {
+    [data-testid="stCodeBlock"] *,
+    .stCodeBlock,
+    .stCodeBlock *,
+    pre, 
+    code {
         background-color: #0f172a !important;
         color: #38bdf8 !important;
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        border-radius: 12px !important;
     }
-    
-    /* Target syntax highlighting spans to ensure they don't stay dark */
-    [data-testid="stCodeBlock"] span, .stCodeBlock span {
-        color: inherit !important;
+
+    /* Target specific syntax highlighting tokens to ensure they don't vanish */
+    span[style*="color"], span.token, span.keyword, span.string {
+        color: #38bdf8 !important;
+        background: transparent !important;
     }
 
     /* Fix for Download Buttons (White on White) */
