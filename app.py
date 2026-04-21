@@ -405,15 +405,23 @@ st.markdown("""
         width: 100% !important;
     }
 
-    /* Code Blocks Readability */
-    [data-testid="stCodeBlock"] {
+    /* Code Blocks Readability - Exhaustive Fix */
+    [data-testid="stCodeBlock"], 
+    [data-testid="stCodeBlock"] > div, 
+    [data-testid="stCodeBlock"] pre, 
+    [data-testid="stCodeBlock"] code,
+    .stCodeBlock, 
+    .stCodeBlock pre, 
+    .stCodeBlock code {
         background-color: #0f172a !important;
-        border-radius: 12px !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    }
-    [data-testid="stCodeBlock"] code {
         color: #38bdf8 !important;
-        font-family: 'JetBrains Mono', monospace !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 12px !important;
+    }
+    
+    /* Target syntax highlighting spans to ensure they don't stay dark */
+    [data-testid="stCodeBlock"] span, .stCodeBlock span {
+        color: inherit !important;
     }
 
     /* Fix for Download Buttons (White on White) */
