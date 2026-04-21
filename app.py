@@ -207,28 +207,44 @@ def safe_fetch_headers(url: str, method='HEAD'):
     return out
 
 def create_gauge_chart(risk_score):
-    """Creates a Plotly gauge chart for the risk score."""
+    """Creates a vibrant Plotly gauge chart for the risk score."""
+    # Define colors based on risk levels
+    if risk_score >= 80:
+        color = "#ff4b4b"
+    elif risk_score >= 40:
+        color = "#ffa421"
+    else:
+        color = "#00d4ff"
+
     fig = go.Figure(go.Indicator(
         mode="gauge+number",
         value=risk_score,
         domain={'x': [0, 1], 'y': [0, 1]},
-        title={'text': "Risk Score", 'font': {'size': 20}},
+        title={'text': "Risk Level Assessment", 'font': {'size': 24, 'color': '#f8fafc'}},
+        number={'font': {'size': 48, 'color': color}, 'suffix': "%"},
         gauge={
-            'axis': {'range': [None, 100], 'tickwidth': 1, 'tickcolor': "darkblue"},
-            'bar': {'color': "#2E3D52"},
-            'bgcolor': "white",
-            'borderwidth': 2,
-            'bordercolor': "gray",
+            'axis': {'range': [0, 100], 'tickwidth': 1, 'tickcolor': "#475569"},
+            'bar': {'color': color},
+            'bgcolor': "rgba(0,0,0,0)",
+            'borderwidth': 0,
             'steps': [
-                {'range': [0, 40], 'color': '#28a745'},
-                {'range': [40, 80], 'color': '#ffc107'},
-                {'range': [80, 100], 'color': '#dc3545'}
+                {'range': [0, 40], 'color': 'rgba(0, 212, 255, 0.1)'},
+                {'range': [40, 80], 'color': 'rgba(255, 164, 33, 0.1)'},
+                {'range': [80, 100], 'color': 'rgba(255, 75, 75, 0.1)'}
             ],
+            'threshold': {
+                'line': {'color': "white", 'width': 4},
+                'thickness': 0.75,
+                'value': risk_score
+            }
         }
     ))
     fig.update_layout(
-        height=250,
-        margin=dict(l=10, r=10, t=50, b=10)
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+        height=280,
+        margin=dict(l=20, r=20, t=50, b=20),
+        font={'color': "#f8fafc"}
     )
     return fig
 
@@ -298,18 +314,131 @@ st.set_page_config(page_title="PhishScanner — SMS Link Analyzer", layout="wide
 
 st.markdown("""
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400&display=swap');
+
+    /* Theme Engine - Forces Premium Dark Mode Visibility */
+    .stApp {
+        background: radial-gradient(circle at 50% 0%, #1e293b 0%, #0f172a 100%) !important;
+        color: #f8fafc !important;
+        font-family: 'Inter', sans-serif;
+    }
+
+    /* Fixed Text Readability for Light Mode Browsers */
+    label, .stMarkdown, p, span, h1, h2, h3, .stMetricValue, .stMetricLabel {
+        color: #f8fafc !important;
+    }
+    
+    /* Specific readability for URL input label */
+    .stTextInput label {
+        color: #38bdf8 !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.5px;
+    }
+
+    /* Header Aesthetics */
     .main-header {
-        font-size: 2.5em;
-        font-weight: bold;
-        color: #0066cc;
+        font-size: 3.8rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         text-align: center;
-        margin-bottom: 10px;
+        margin-bottom: 2px;
+        filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.4));
     }
     .subtitle {
         text-align: center;
-        color: #666;
-        margin-bottom: 30px;
+        color: #94a3b8 !important;
+        font-size: 1.2rem;
+        margin-bottom: 40px;
     }
+
+    /* Cards & Alignment */
+    div[data-testid="stMetric"] {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 24px !important;
+        backdrop-filter: blur(8px);
+        transition: transform 0.3s ease;
+    }
+    div[data-testid="stMetric"]:hover {
+        transform: translateY(-5px);
+        border-color: #38bdf8;
+    }
+
+    /* Aligning the Clear Button with Text Input */
+    .stButton > button {
+        height: 100% !important;
+        margin-top: 28px !important; /* Forces alignment with labelled input */
+        border-radius: 10px !important;
+        font-weight: 600 !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+        color: #f8fafc !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        transition: all 0.2s ease !important;
+    }
+    
+    .stButton > button:hover {
+        background: rgba(255, 255, 255, 0.15) !important;
+        border-color: #38bdf8 !important;
+    }
+
+    .stButton > button[kind="primary"] {
+        margin-top: 5px !important; /* Reset for Analyze button */
+        background: linear-gradient(90deg, #38bdf8, #4f46e5) !important;
+        border: none !important;
+        box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2) !important;
+    }
+    
+    /* Export Buttons Readability */
+    .stDownloadButton > button {
+        background: #f8fafc !important;
+        color: #0f172a !important;
+        border-radius: 10px !important;
+        font-weight: 700 !important;
+        border: none !important;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
+    }
+    
+    .stDownloadButton > button:hover {
+        transform: scale(1.02);
+        background: #38bdf8 !important;
+    }
+
+    /* Tabs Styling */
+    .stTabs [data-baseweb="tab-list"] {
+        background: rgba(255, 255, 255, 0.02) !important;
+        border-radius: 14px;
+        padding: 10px;
+        gap: 8px;
+    }
+    .stTabs [data-baseweb="tab"] {
+        color: #94a3b8 !important;
+        font-weight: 600 !important;
+        border-radius: 8px !important;
+        padding: 10px 20px !important;
+    }
+    .stTabs [aria-selected="true"] {
+        background: #38bdf8 !important;
+        color: white !important;
+    }
+
+    /* Mobile Responsive Logic */
+    @media (max-width: 768px) {
+        .main-header { font-size: 2.2rem; }
+        .stButton > button { margin-top: 5px !important; width: 100% !important; }
+        div[data-testid="column"] { width: 100% !important; margin-bottom: 20px; }
+    }
+
+    .footer-credit {
+        text-align: center;
+        padding: 25px;
+        margin-top: 50px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        color: #64748b;
+    }
+    .footer-credit strong { color: #818cf8; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -337,8 +466,11 @@ with tab2:
         with col1:
             if st.button(f"Load: {sample['name']}", key=f"btn_{idx}"):
                 st.session_state.url_to_analyze = sample['url']
+                # Programmatically update the text input key
+                st.session_state["url_input_field"] = sample['url']
+                st.rerun()
         with col2:
-            st.caption(sample['description'])
+            st.markdown(f"<div style='padding-top: 10px; color: #cbd5e1;'>{sample['description']}</div>", unsafe_allow_html=True)
 
 with tab1:
     st.subheader("URL Input")
@@ -742,3 +874,4 @@ with tab4:
 
 st.divider()
 st.caption("🔐 PhishScanner v2.0 — Safe, Professional SMS Link Analysis | Non-Executing Defense Mode Active")
+st.markdown("<div class='footer-credit'>👨‍💻 Developed by <strong>Sophia Dcruz</strong></div>", unsafe_allow_html=True)
