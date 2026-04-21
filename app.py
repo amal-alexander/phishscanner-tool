@@ -498,7 +498,7 @@ with col3:
 
 st.divider()
 
-tab1, tab2, tab3, tab4 = st.tabs(["🔍 Analyzer", "📚 Samples", "ℹ️ Help", "👤 About Me"])
+tab1, tab2, tab3 = st.tabs(["🔍 Analyzer", "📚 Samples", "ℹ️ Help"])
 
 with tab2:
     st.subheader("Preloaded Sample URLs")
@@ -805,113 +805,7 @@ with tab3:
     6. **Report phishing** to the legitimate company's security team
     """)
 
-with tab4:
-    st.subheader("👤 About the Developer")
-    
-    col1, col2 = st.columns([2.5, 1.5])
-    
-    with col1:
-        st.write("## 🐸 [Amal Alexander](https://www.linkedin.com/in/amal-alexander-305780131/)")
-        st.write("**Owner of [Ultra Frog 🐸](https://ultra-frog.onrender.com/)**")
-        st.divider()
-        
-        st.write("### 📊 Professional Summary")
-        st.write("With **4+ years of experience in SEO**, I've successfully led strategies across Healthcare, BFSI & Finance, and E-commerce helping brands recover, scale, and dominate search visibility even in competitive and regulated industries.")
-        
-        st.divider()
-        st.write("### 🏆 Most Impactful Healthcare Projects")
-        
-        st.write("**📈 145% Organic Traffic Growth in Just 3 Months**")
-        st.write("For a site previously penalized by Google for spam link activity:")
-        st.write("- Applied data-led keyword mapping and trust rebuilding strategies")
-        st.write("- Implemented SERP-aligned content optimization")
-        st.write("- Not only recovered but **surpassed previous benchmarks**")
-        
-        st.write("**💰 320% Revenue Uplift**")
-        st.write("Through deep competitor trend analysis and search-intent-focused strategy:")
-        st.write("- Aligned content efforts to bottom-of-funnel queries")
-        st.write("- Optimized for real user behavior and decision patterns")
-        st.write("- Transformed organic performance into measurable revenue generation")
-        
-        st.divider()
-        st.write("### 💡 Core Philosophy")
-        st.info("**SEO is a long-term business enabler** — not just about backlinks and rankings, but aligning with evolving search intent and user needs.")
-        
-        st.divider()
-        st.write("### 💼 Domain Expertise")
-        
-        with st.expander("🏥 Healthcare SEO", expanded=True):
-            st.write("- YMYL-compliant structures")
-            st.write("- Trust signal restoration")
-            st.write("- Semantic search coverage")
-        
-        with st.expander("🏦 BFSI & Banking Finance"):
-            st.write("- Increased traffic by using smart schema markup")
-            st.write("- Lead-focused content strategy")
-            st.write("- Targeting users at the right moment in their decision journey")
-        
-        with st.expander("🛒 E-commerce SEO"):
-            st.write("- Product/category discovery optimization")
-            st.write("- Internal linking architecture")
-            st.write("- Conversion-focused pages optimization")
-        
-        st.divider()
-        st.write("### 🤖 Special Skills")
-        
-        st.write("✅ **AI-Powered SEO Tool Development**")
-        st.write("Streamlit + spaCy visualizers, bulk schema generators")
-        
-        st.write("✅ **Browser Extension Creation**")
-        st.write("SEO audit automation, competitor data scraping")
-        
-        st.write("✅ **Structured Data Expertise**")
-        st.write("FAQ, Breadcrumb, HowTo, Review schemas")
-        
-        st.write("✅ **Penalty Recovery Planning**")
-        st.write("Manual/spam link cleanups, disavow files, content trust rebuild")
-        
-        st.write("✅ **Entity-based Content Strategy & Search Intent Modeling**")
-        
-        st.write("✅ **Competitor Content Gap + Performance Analysis**")
-    
-    with col2:
-        st.write("### 🌐 Connect With Me")
-        
-        col_btn1, col_btn2 = st.columns(2)
-        with col_btn1:
-            st.markdown("[🔗 LinkedIn Profile](https://www.linkedin.com/in/amal-alexander-305780131/)", unsafe_allow_html=True)
-        with col_btn2:
-            st.markdown("[🐸 Ultra Frog](https://ultra-frog.onrender.com/)", unsafe_allow_html=True)
-        
-        st.divider()
-        st.write("### 📌 Quick Stats")
-        
-        stat_col1, stat_col2 = st.columns(2)
-        with stat_col1:
-            st.metric("Experience", "4+ Years")
-            st.metric("Industries", "3+ Sectors")
-        with stat_col2:
-            st.metric("Traffic Growth", "145%+")
-            st.metric("Revenue Uplift", "320%+")
-        
-        st.divider()
-        st.write("### 🎯 Services")
-        
-        st.write("✓ SEO Strategy & Planning")
-        st.write("✓ Tool Development")
-        st.write("✓ Data Analysis")
-        st.write("✓ Penalty Recovery")
-        st.write("✓ Content Strategy")
-        st.write("✓ Competitor Analysis")
-        st.write("✓ Schema Implementation")
-        
-        st.divider()
-        st.write("### 🔧 Tech Stack")
-        
-        st.write("• Python")
-        st.write("• Streamlit")
-        st.write("• spaCy NLP")
-        st.write("• Schema.org")
+
         st.write("• GSC & Analytics")
         st.write("• Extension Dev")
 
