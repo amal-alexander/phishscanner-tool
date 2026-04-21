@@ -805,10 +805,6 @@ with tab3:
     6. **Report phishing** to the legitimate company's security team
     """)
 
-
-        st.write("• GSC & Analytics")
-        st.write("• Extension Dev")
-
 st.divider()
 st.caption("🔐 PhishScanner v2.0 — Safe, Professional SMS Link Analysis | Non-Executing Defense Mode Active")
 st.markdown("<div class='footer-credit'>👨‍💻 Developed by <strong>Sophia Dcruz</strong></div>", unsafe_allow_html=True)
