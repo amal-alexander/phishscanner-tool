@@ -405,6 +405,33 @@ st.markdown("""
         width: 100% !important;
     }
 
+    /* Code Blocks Readability */
+    [data-testid="stCodeBlock"] {
+        background-color: #0f172a !important;
+        border-radius: 12px !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    [data-testid="stCodeBlock"] code {
+        color: #38bdf8 !important;
+        font-family: 'JetBrains Mono', monospace !important;
+    }
+
+    /* Fix for Download Buttons (White on White) */
+    .stDownloadButton button {
+        background-color: #ffffff !important;
+        border: none !important;
+    }
+    .stDownloadButton button p, .stDownloadButton button span, .stDownloadButton button i {
+        color: #0f172a !important;
+        font-weight: 700 !important;
+    }
+    .stDownloadButton button:hover {
+        background-color: #38bdf8 !important;
+    }
+    .stDownloadButton button:hover p {
+        color: #ffffff !important;
+    }
+
     /* Mobile Responsive Logic */
     @media (max-width: 768px) {
         .main-header { font-size: 2.2rem; }
