@@ -405,6 +405,12 @@ st.markdown("""
         width: 100% !important;
     }
 
+    /* HIDE STREAMLIT HEADER (The white line) */
+    header[data-testid="stHeader"] {
+        visibility: hidden !important;
+        background: transparent !important;
+    }
+
     /* THE NUCLEAR FIX - Code Blocks & Text Areas Readability */
     [data-testid="stCodeBlock"], 
     [data-testid="stCodeBlock"] *,
@@ -415,6 +421,21 @@ st.markdown("""
         background-color: #0f172a !important;
         color: #38bdf8 !important;
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+
+    /* Popovers, Menus and Modals Fix */
+    div[data-baseweb="popover"],
+    div[data-baseweb="menu"],
+    div[data-baseweb="dropdown"],
+    div[role="listbox"] {
+        background-color: #0f172a !important;
+        color: #f8fafc !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    div[data-baseweb="popover"] *, 
+    div[data-baseweb="menu"] * {
+        color: #f8fafc !important;
     }
 
     /* Target specific syntax highlighting tokens to ensure they don't vanish */
