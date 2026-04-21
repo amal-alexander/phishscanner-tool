@@ -363,6 +363,12 @@ st.markdown("""
         margin-bottom: 2px;
         filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.4));
     }
+    .main-header span {
+        -webkit-text-fill-color: initial !important;
+        background: none !important;
+        -webkit-background-clip: initial !important;
+        filter: none !important;
+    }
     .subtitle {
         text-align: center;
         color: #94a3b8 !important;
@@ -479,7 +485,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="main-header">🔍 PhishScanner</div>', unsafe_allow_html=True)
+st.markdown('<div class="main-header"><span>🔍</span> PhishScanner</div>', unsafe_allow_html=True)
 st.markdown('<div class="subtitle">Professional SMS Link Analyzer & URL Security Inspector</div>', unsafe_allow_html=True)
 
 col1, col2, col3 = st.columns([1, 1, 1])
