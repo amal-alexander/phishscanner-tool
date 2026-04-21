@@ -323,16 +323,33 @@ st.markdown("""
         font-family: 'Inter', sans-serif;
     }
 
-    /* Fixed Text Readability for Light Mode Browsers */
-    label, .stMarkdown, p, span, h1, h2, h3, .stMetricValue, .stMetricLabel {
+    /* Ultra-Aggressive Text Readability */
+    * {
+        color: inherit; /* Allow color to flow except where overridden */
+    }
+    
+    /* Force specific elements to be readable */
+    label, .stMarkdown, p, span, h1, h2, h3, div, .stMetricValue, .stMetricLabel {
         color: #f8fafc !important;
     }
     
+    /* Ensure metric values pop */
+    [data-testid="stMetricValue"] > div {
+        color: #38bdf8 !important;
+        font-weight: 800 !important;
+        font-size: 2.2rem !important;
+    }
+    [data-testid="stMetricLabel"] > div {
+        color: #94a3b8 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1px !important;
+    }
+
     /* Specific readability for URL input label */
     .stTextInput label {
         color: #38bdf8 !important;
-        font-weight: 600 !important;
-        letter-spacing: 0.5px;
+        font-weight: 700 !important;
+        font-size: 1.1rem !important;
     }
 
     /* Header Aesthetics */
@@ -341,7 +358,7 @@ st.markdown("""
         font-weight: 800;
         background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
         -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        -webkit-text-fill-color: transparent ;
         text-align: center;
         margin-bottom: 2px;
         filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.4));
@@ -350,95 +367,58 @@ st.markdown("""
         text-align: center;
         color: #94a3b8 !important;
         font-size: 1.2rem;
-        margin-bottom: 40px;
+        margin-bottom: 30px;
     }
 
     /* Cards & Alignment */
     div[data-testid="stMetric"] {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 16px;
-        padding: 24px !important;
-        backdrop-filter: blur(8px);
-        transition: transform 0.3s ease;
-    }
-    div[data-testid="stMetric"]:hover {
-        transform: translateY(-5px);
-        border-color: #38bdf8;
+        background: rgba(255, 255, 255, 0.04) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 20px !important;
+        padding: 20px !important;
+        backdrop-filter: blur(12px) !important;
+        box-shadow: 0 10px 30px -15px rgba(0,0,0,0.5) !important;
     }
 
-    /* Aligning the Clear Button with Text Input */
+    /* Aligning the Clear Button */
     .stButton > button {
         height: 100% !important;
-        margin-top: 28px !important; /* Forces alignment with labelled input */
-        border-radius: 10px !important;
-        font-weight: 600 !important;
-        background: rgba(255, 255, 255, 0.08) !important;
+        margin-top: 30px !important;
+        border-radius: 12px !important;
+        font-weight: 700 !important;
+        background: rgba(255, 255, 255, 0.07) !important;
         color: #f8fafc !important;
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        transition: all 0.2s ease !important;
     }
     
-    .stButton > button:hover {
-        background: rgba(255, 255, 255, 0.15) !important;
-        border-color: #38bdf8 !important;
-    }
-
     .stButton > button[kind="primary"] {
-        margin-top: 5px !important; /* Reset for Analyze button */
+        margin-top: 5px !important;
         background: linear-gradient(90deg, #38bdf8, #4f46e5) !important;
-        border: none !important;
-        box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2) !important;
+        color: white !important;
+        box-shadow: 0 8px 20px rgba(56, 189, 248, 0.3) !important;
     }
     
-    /* Export Buttons Readability */
+    /* Export Buttons */
     .stDownloadButton > button {
         background: #f8fafc !important;
         color: #0f172a !important;
-        border-radius: 10px !important;
-        font-weight: 700 !important;
-        border: none !important;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
-    }
-    
-    .stDownloadButton > button:hover {
-        transform: scale(1.02);
-        background: #38bdf8 !important;
-    }
-
-    /* Tabs Styling */
-    .stTabs [data-baseweb="tab-list"] {
-        background: rgba(255, 255, 255, 0.02) !important;
-        border-radius: 14px;
-        padding: 10px;
-        gap: 8px;
-    }
-    .stTabs [data-baseweb="tab"] {
-        color: #94a3b8 !important;
-        font-weight: 600 !important;
-        border-radius: 8px !important;
-        padding: 10px 20px !important;
-    }
-    .stTabs [aria-selected="true"] {
-        background: #38bdf8 !important;
-        color: white !important;
+        width: 100% !important;
     }
 
     /* Mobile Responsive Logic */
     @media (max-width: 768px) {
         .main-header { font-size: 2.2rem; }
-        .stButton > button { margin-top: 5px !important; width: 100% !important; }
-        div[data-testid="column"] { width: 100% !important; margin-bottom: 20px; }
+        .stButton > button { margin-top: 10px !important; }
+        div[data-testid="stMetric"] { padding: 15px !important; }
+        [data-testid="stMetricValue"] > div { font-size: 1.8rem !important; }
     }
 
     .footer-credit {
         text-align: center;
         padding: 25px;
         margin-top: 50px;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
         color: #64748b;
     }
-    .footer-credit strong { color: #818cf8; }
 </style>
 """, unsafe_allow_html=True)
 
