@@ -417,8 +417,10 @@ st.markdown("""
         text-align: center;
         padding: 25px;
         margin-top: 50px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
         color: #64748b;
     }
+    .footer-credit strong { color: #818cf8; }
 </style>
 """, unsafe_allow_html=True)
 
