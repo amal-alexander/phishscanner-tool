@@ -28,6 +28,3 @@ PhishScanner is a powerful Streamlit application designed for the safe, non-exec
 -   For known malicious links, it is still best practice to run this tool in an isolated environment (like a VM or Docker container).
 -   Do not expose a public-facing version of this app without implementing proper authentication and rate-limiting.
 
-## License
-
-MIT 
