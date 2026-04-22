@@ -2,7 +2,7 @@
 
 PhishScanner is a powerful Streamlit application designed for the safe, non-executing analysis of suspicious URLs. It provides a multi-layered inspection to help users identify potential phishing, malware, and scam links before clicking them.
 
-**Created by:** [Amal Alexander](https://www.linkedin.com/in/amal-alexander-305780131/)
+**Created by:** Sophia Dcruz
 
 ## Core Features
 
